@@ -14,6 +14,12 @@ exports.traverseJsonSchema = (mutableSchema, visitor) => {
     _.each(mutableSchema.properties, traverseSubSchema);
     traverseSubSchema(mutableSchema.not);
     traverseSubSchema(mutableSchema.items);
+    if (mutableSchema.type === 'object' || (mutableSchema.type && mutableSchema.type[0] === 'object')) {
+        // explicitly set additionalProperties to false
+        if (!mutableSchema.additionalProperties) {
+            mutableSchema.additionalProperties = false;
+        }
+    }
     traverseSubSchema(mutableSchema.additionalProperties);
     visitor(mutableSchema);
 };
