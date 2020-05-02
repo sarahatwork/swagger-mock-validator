@@ -7,9 +7,9 @@ const content_negotiation_1 = require("./content-negotiation");
 const validate_json_1 = require("./validate-json");
 const removeRequiredPropertiesFromSchema = (schema) => {
     const modifiedSchema = _.cloneDeep(schema);
-    traverse_json_schema_1.traverseJsonSchema(modifiedSchema, (mutableSchema) => {
-        delete mutableSchema.required;
-    });
+    // traverse_json_schema_1.traverseJsonSchema(modifiedSchema, (mutableSchema) => {
+    //     delete mutableSchema.required;
+    // });
     return modifiedSchema;
 };
 const isMockInteractionWithoutResponseBody = (parsedMockInteraction) => !parsedMockInteraction.responseBody.value;
